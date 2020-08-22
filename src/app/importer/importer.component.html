@@ -1,0 +1,87 @@
+<form [formGroup]="form" (ngSubmit)="import()" class="wrap">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>テンプレート</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="template"
+        autocomplete="off"
+        placeholder="owner/name"
+        required
+        autofocus
+      />
+      <mat-error
+        *ngIf="
+          form.hasError('path', 'template') ||
+          form.hasError('pattern', 'template')
+        "
+        >パスが正しくありません</mat-error
+      >
+      <mat-error *ngIf="form.hasError('template', 'template')"
+        >このリポジトリはテンプレートではありません</mat-error
+      >
+      <mat-error *ngIf="form.hasError('request', 'template')"
+        >テンプレートにアクセスできません</mat-error
+      >
+      <mat-hint *ngIf="source"
+        ><a
+          href="https://docs.github.com/ja/github/creating-cloning-and-archiving-repositories/creating-a-template-repository"
+          target="_blank"
+          >テンプレート設定</a
+        >である必要があります。</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>インポート先</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="owner/name"
+        formControlName="newRepository"
+        autocomplete="off"
+        required
+      />
+      <mat-error *ngIf="form.hasError('import', 'newRepository')"
+        >インポートに失敗しました</mat-error
+      >
+      <mat-error *ngIf="form.hasError('owner', 'newRepository')"
+        >オーナーが取得できません</mat-error
+      >
+      <mat-error
+        *ngIf="
+          form.hasError('path', 'newRepository') ||
+          form.hasError('pattern', 'newRepository')
+        "
+        >パスが正しくありません</mat-error
+      >
+    </mat-form-field>
+
+    <a
+      [href]="newRepository.url"
+      target="_blank"
+      ref="noopener"
+      *ngIf="newRepository"
+      mat-button
+    >
+      <span>リポジトリを開く</span>
+      <mat-icon inline>open_in_new</mat-icon>
+    </a>
+  </div>
+  <div>
+    <mat-selection-list dense formControlName="filter">
+      <h2 matSubheader>インポート対象</h2>
+      <mat-list-option value="source">Srouce</mat-list-option>
+      <mat-list-option value="issue">Issue</mat-list-option>
+      <mat-list-option value="label">Label</mat-list-option>
+    </mat-selection-list>
+
+    <button
+      [disabled]="form.invalid || processing"
+      mat-raised-button
+      color="primary"
+    >
+      インポート
+    </button>
+  </div>
+</form>

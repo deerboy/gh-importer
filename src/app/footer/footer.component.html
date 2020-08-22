@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <a
+    mat-button
+    href="https://twitter.com/d151005"
+    target="_blank"
+    rel="noopener"
+  >
+    <mat-icon svgIcon="twitter"></mat-icon>
+    <span>d151005</span></a
+  >
+  <button
+    *ngIf="apolloService.apollo.client"
+    (click)="apolloService.removeClient()"
+    mat-button
+  >
+    トークンクリア
+  </button>
+</mat-toolbar>

@@ -1,0 +1,7 @@
+query getRepository($owner: String!, $name: String!) {
+  repository(name: $name, owner: $owner) {
+    id
+    url
+    isTemplate
+  }
+}

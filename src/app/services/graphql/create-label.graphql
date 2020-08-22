@@ -1,0 +1,17 @@
+mutation createLabel(
+  $repositoryId: ID!
+  $name: String!
+  $color: String!
+  $description: String
+) {
+  createLabel(
+    input: {
+      repositoryId: $repositoryId
+      name: $name
+      color: $color
+      description: $description
+    }
+  ) {
+    clientMutationId
+  }
+}

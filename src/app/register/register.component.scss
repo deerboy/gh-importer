@@ -1,0 +1,16 @@
+.register {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.notice {
+  color: rgba(black, 0.6);
+  font-size: 12px;
+  line-height: 1.8;
+}

@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<main>
+  <div class="container">
+    <app-importer
+      *ngIf="apolloService.apollo.client; else input"
+    ></app-importer>
+    <ng-template #input>
+      <app-register></app-register>
+    </ng-template>
+  </div>
+</main>
+
+<app-footer></app-footer>

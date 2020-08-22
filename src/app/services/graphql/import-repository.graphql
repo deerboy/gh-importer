@@ -1,0 +1,16 @@
+mutation importRepository($name: String!, $ownerId: ID!, $repositoryId: ID!) {
+  cloneTemplateRepository(
+    input: {
+      name: $name
+      ownerId: $ownerId
+      repositoryId: $repositoryId
+      visibility: PUBLIC
+    }
+  ) {
+    repository {
+      id
+      url
+      isTemplate
+    }
+  }
+}

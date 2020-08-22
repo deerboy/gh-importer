@@ -1,0 +1,19 @@
+query getLabels($owner: String!, $name: String!, $cursor: String) {
+  repository(name: $name, owner: $owner) {
+    id
+    labels(first: 100, after: $cursor) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        node {
+          id
+          color
+          name
+          description
+        }
+      }
+    }
+  }
+}

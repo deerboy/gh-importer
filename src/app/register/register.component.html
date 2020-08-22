@@ -1,0 +1,37 @@
+<p>
+  <a href="https://github.com/settings/tokens/new" target="_blank"
+    >パーソナルアクセストークンを作成 <mat-icon inline>open_in_new</mat-icon></a
+  >（repoにチェック）して下記に貼り付けてください。
+</p>
+<div class="register">
+  <mat-form-field appearance="outline">
+    <mat-label>token</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="token"
+      autofocus
+      required
+      autocomplete="off"
+    />
+  </mat-form-field>
+  <button
+    (click)="apolloService.setClient(token.value)"
+    [disabled]="!token.value"
+    mat-raised-button
+    color="primary"
+  >
+    利用開始
+  </button>
+</div>
+
+<ul class="notice">
+  <li>
+    トークンはローカルストレージにのみ保持され、サーバーにアップロードされることはありません。
+  </li>
+  <li>トークンはリポジトリ（IssueやLabel）のインポートにのみ使用します。</li>
+  <li>トークンを使って勝手にリポジトリを操作することはありません。</li>
+  <li>
+    トークンはローカルストレージに保持されるため、ネットカフェ等の共有PCからの利用は避けてください。
+  </li>
+</ul>

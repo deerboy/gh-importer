@@ -1,0 +1,2 @@
+schemaPath: schema.docs.graphql
+includes: ["**/*.graphql"]

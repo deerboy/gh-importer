@@ -1,0 +1,14 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 40px;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 40px;
+}
+
+mat-selection-list {
+  margin-bottom: 24px;
+}
